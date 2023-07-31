@@ -10,7 +10,7 @@
 
 .card{
   
-    
+    display: visible;
     border: 1px black solid;
     margin: 5px;
     text-align: center;
@@ -50,4 +50,16 @@ h2{
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     font-size: 25px;
+}
+header{
+    display: grid;
+    justify-content: center;
+    
+}
+input{
+    border: 1px black solid;
+    width: 100px;
+    height: 30px;
+    margin-top: 10px;
+
 }

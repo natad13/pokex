@@ -1,4 +1,6 @@
 promesa();
+
+
 function promesa() {
 
     fetch(`./pokemones.json`).then((value) => {
@@ -18,7 +20,7 @@ function promesa() {
     });
   
 }
-   
+
 
 function crearImagen (params,nombre,id) {
    
@@ -52,10 +54,21 @@ function mostrarMensaje(id) {
         
     });
 
-
-    
+ 
 }
+function buscar () {
 
+    let formulario = new FormData(form);
+    let producto = formulario.get("producto");
+    
+    
 
+    console.log(producto);
+}
+const form = document.getElementById("formulario")
+form.addEventListener("submit",function(event){
+    event.preventDefault();
+
+})
 
 
