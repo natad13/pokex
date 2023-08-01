@@ -1,19 +1,45 @@
-promesa();
+promesa("a");
 
 
-function promesa() {
+function promesa(x) {
 
     fetch(`./pokemones.json`).then((value) => {
     
         return value.json();
 
     }).then((valueJson)=>{
-    
         
-    for (let index = 0; index <10; index++) {
-    
-        crearImagen(valueJson[index].ThumbnailImage, valueJson[index].name,valueJson[index].id);   
-    }
+
+        if (x=="a") {
+            for (let index = 0; index <10; index++) {
+            crearImagen(valueJson[index].ThumbnailImage, valueJson[index].name,valueJson[index].id); 
+            }
+            
+        }
+        else{
+            let contador=1;
+            for (let index = 0; index <10; index++) {
+                console.log(`INGRESADO ${x}`)
+                console.log(valueJson[index].name)
+                
+                if (x == valueJson[index].name) {
+                    console.log("Entre")
+                    crearImagen(valueJson[index].ThumbnailImage, valueJson[index].name,contador); 
+                    contador = contador +1 ;
+
+                } else {
+                    
+                    let result = document.getElementById("resultado");
+                    result.innerHTML=("Pokemon No encontrado");
+                    
+                    
+                    
+                }
+                
+                }
+           
+        }    
+          
     }).catch((err)=>{
         document.write("Ocurrio un error.:(");
         
@@ -60,15 +86,30 @@ function buscar () {
 
     let formulario = new FormData(form);
     let producto = formulario.get("producto");
-    
-    
+    borrar();
+    promesa(producto);
+  
 
-    console.log(producto);
 }
 const form = document.getElementById("formulario")
 form.addEventListener("submit",function(event){
     event.preventDefault();
 
 })
+
+function borrar() {
+
+    for (let index = 0; index <10; index++) {
+        let img = document.getElementById(`card-img-top${index+1}`);
+        img.setAttribute("src","") 
+
+        let poder =document.getElementById(`card-title${index+1}`)
+        poder.innerHTML =""; 
+        let boton =document.getElementsByClassName("boton")
+        boton.innerHTML =""; 
+
+        }
+       
+}
 
 
